@@ -19,14 +19,13 @@ permissions:
   contents: write
 jobs:
   release:
-    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@870d3c1b03a4927ad71ba1a64131d2ed9a081db8
+    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@83bb9936adf5d2d086d362d07219b9a740682eda
     with:
       release_files: |
         rules_oci-*.tar.gz
         docs.tar.gz
       prerelease: false
-      docs: true
-
+      docs: docs.tar.gz
       tag_name: ${{ inputs.tag_name || github.ref_name }}
   publish:
     needs: release
