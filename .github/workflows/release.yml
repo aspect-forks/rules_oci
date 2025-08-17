@@ -23,6 +23,7 @@ jobs:
     with:
       release_files: rules_oci-*.tar.gz
       prerelease: false
+      docs: true
       tag_name: ${{ inputs.tag_name || github.ref_name }}
   publish:
     needs: release
