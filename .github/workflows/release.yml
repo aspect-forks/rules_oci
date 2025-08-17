@@ -2,6 +2,7 @@
 name: Release
 
 on:
+  workflow_dispatch:
   # Can be triggered from the tag.yaml workflow
   workflow_call:
     inputs:
