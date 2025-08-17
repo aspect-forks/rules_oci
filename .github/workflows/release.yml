@@ -19,7 +19,7 @@ permissions:
   contents: write
 jobs:
   release:
-    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@ce2eaca728216e21df12bd9b594a4582995813bf
+    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@ae2c01e0c933062babe0b28b5050210a5168ffd4
     with:
       release_files: rules_oci-*.tar.gz
       prerelease: false
