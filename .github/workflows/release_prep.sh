@@ -12,8 +12,8 @@ git archive --format=tar --prefix=${PREFIX}/ ${TAG} | gzip > $ARCHIVE
 SHA=$(shasum -a 256 $ARCHIVE | awk '{print $1}')
 
 docs=$(mktemp -d)
-bazel --output_base=$docs query 'kind("starlark_doc_extract rule", //oci/...)' \
-    | bazel --output_base=$docs build --remote_download_regex='.*doc_extract\.binaryproto'
+bazel --output_base=$docs query --output=label 'kind("starlark_doc_extract rule", //oci/...)' \
+    | xargs bazel --output_base=$docs build --remote_download_regex='.*doc_extract\.binaryproto'
 tar --create --verbose --auto-compress --directory "$(bazel --output_base=$docs info bazel-bin)" --file $GITHUB_WORKSPACE/rules-oci-$TAG.docs.tar.gz .
 
 cat << EOF
